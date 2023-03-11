@@ -12,4 +12,6 @@
     <string name="easy">Легкий</string>
     <string name="normal">Нормальный</string>
     <string name="hard">Сложный</string>
+    <string name="emoji_image">Emoji image</string>
+    <string name="button_retry">Попробовать снова</string>
 </resources>

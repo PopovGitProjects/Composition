@@ -12,10 +12,10 @@
     <color name="levelHard">#e01b24</color>
     <color name="circleSum">#3F51B5</color>
     <color name="question">#0C6514</color>
-    <color name="option1">#2196F3</color>
-    <color name="option2">#FF5722</color>
-    <color name="option3">#FFC107</color>
+    <color name="option1">#1464A3</color>
+    <color name="option2">#C93A0D</color>
+    <color name="option3">#AC5509</color>
     <color name="option4">#673AB7</color>
-    <color name="option5">#4CAF50</color>
-    <color name="option6">#009688</color>
+    <color name="option5">#247027</color>
+    <color name="option6">#0C5E56</color>
 </resources>
