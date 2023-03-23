@@ -14,4 +14,5 @@
     <string name="hard">Сложный</string>
     <string name="emoji_image">Emoji image</string>
     <string name="button_retry">Попробовать снова</string>
+    <string name="progress_answers">Провильных ответов %s (минимум %s)</string>
 </resources>
