@@ -18,7 +18,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     private val context = application
 
     lateinit var gameSettings: GameSettings
-    lateinit var level: Level
+    private lateinit var level: Level
 
     private val repository = GameRepositoryImpl
     private val generateQuestionUseCase = GenerateQuestionUseCase(repository)
@@ -64,11 +64,9 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun startTimer() {
-        timer = object :
-            CountDownTimer(
-                gameSettings.gameTimeInSeconds * MILLIS_IN_SECONDS,
-                MILLIS_IN_SECONDS
-            ) {
+        timer = object : CountDownTimer(
+            gameSettings.gameTimeInSeconds * MILLIS_IN_SECONDS, MILLIS_IN_SECONDS
+        ) {
             override fun onTick(millis: Long) {
                 _formattedTime.value = formatTime(millis)
             }
@@ -121,13 +119,12 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
             countOfRightAnswers,
             gameSettings.minCountOfRightAnswers
         )
-        _enoughCount.value =
-            countOfRightAnswers >= gameSettings.minCountOfRightAnswers
+        _enoughCount.value = countOfRightAnswers >= gameSettings.minCountOfRightAnswers
         _enoughPercent.value = percent >= gameSettings.minPercentOfRightAnswers
     }
 
     private fun calculatePercent(): Int {
-        if (countOfQuestion == 0){
+        if (countOfQuestion == 0) {
             return 0
         }
         return ((countOfRightAnswers / countOfQuestion.toDouble()) * 100).toInt()
