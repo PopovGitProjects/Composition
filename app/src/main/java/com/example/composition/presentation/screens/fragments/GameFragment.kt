@@ -66,7 +66,9 @@ class GameFragment : Fragment() {
 
     private fun setClickListenersToOptions() {
         for (tvOption in tvOptions) {
-            viewModel.chooseAnswer(tvOption.text.toString().toInt())
+            tvOption.setOnClickListener {
+                viewModel.chooseAnswer(tvOption.text.toString().toInt())
+            }
         }
     }
 
@@ -141,6 +143,4 @@ class GameFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
-
-
 }

@@ -17,7 +17,7 @@ class GameFinishedFragment : Fragment() {
     private val binding: FragmentGameFinishedBinding
         get() = _binding ?: throw java.lang.RuntimeException("FragmentGameFinishedBinding == null")
 
-    private lateinit var result: GameResult
+    private lateinit var result: GameResult //TODO Проверить что в него приходит!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

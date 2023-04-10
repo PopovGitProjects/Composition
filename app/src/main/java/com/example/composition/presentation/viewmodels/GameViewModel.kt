@@ -2,6 +2,7 @@ package com.example.composition.presentation.viewmodels
 
 import android.app.Application
 import android.os.CountDownTimer
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -48,13 +49,14 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     private val _minPercent = MutableLiveData<Int>()
     val minPercent: LiveData<Int> get() = _minPercent
     private val _gameResult = MutableLiveData<GameResult>()
+
     val gameResult: LiveData<GameResult> get() = _gameResult
 
     fun startGame(level: Level) {
-        startTimer()
-        updateProgress()
         getGameSettings(level)
+        startTimer()
         generateQuestion()
+        updateProgress()
     }
 
     private fun getGameSettings(level: Level) {
@@ -87,10 +89,11 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         )
     }
 
-    private fun formatTime(time: Long): String {
-        val seconds = time / MILLIS_IN_SECONDS
-        val minutes = time / MILLIS_IN_MINUTES
-        return String().format("%02d:%02d", minutes, seconds)
+    private fun formatTime(timeInMillis: Long): String {
+        val seconds = timeInMillis / MILLIS_IN_SECONDS
+        val minutes = seconds / SECONDS_IN_MINUTES
+        val leftSeconds = seconds - (minutes * SECONDS_IN_MINUTES)
+        return String.format("%02d:%02d", minutes, leftSeconds)
     }
 
     private fun generateQuestion() {
@@ -104,14 +107,14 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun checkAnswer(number: Int) {
-        val rightAnswer = question.value?.rightAnswer
+        val rightAnswer = _question.value?.rightAnswer
         if (number == rightAnswer) {
             countOfRightAnswers++
         }
         countOfQuestion++
     }
 
-    private fun updateProgress() {
+    private fun updateProgress() { //TODO Не правильно работает!
         val percent = calculatePercent()
         _percentOgRightAnswer.value = percent
         _progressAnswers.value = String.format(
@@ -137,6 +140,6 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
 
     companion object {
         private const val MILLIS_IN_SECONDS = 1000L
-        private const val MILLIS_IN_MINUTES = 60000L
+        private const val SECONDS_IN_MINUTES = 60
     }
 }
