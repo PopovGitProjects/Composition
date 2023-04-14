@@ -44,7 +44,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
     val enoughPercent: LiveData<Boolean> get() = _enoughPercent
 
     private var countOfRightAnswers = 0
-    private var countOfQuestion = 0
+    private var countOfQuestions = 0
 
     private val _minPercent = MutableLiveData<Int>()
     val minPercent: LiveData<Int> get() = _minPercent
@@ -84,7 +84,7 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         _gameResult.value = GameResult(
             enoughCount.value == true && enoughPercent.value == true,
             countOfRightAnswers,
-            countOfQuestion,
+            countOfQuestions,
             gameSettings
         )
     }
@@ -111,10 +111,10 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
         if (number == rightAnswer) {
             countOfRightAnswers++
         }
-        countOfQuestion++
+        countOfQuestions++
     }
 
-    private fun updateProgress() { //TODO Не правильно работает!
+    private fun updateProgress() {
         val percent = calculatePercent()
         _percentOgRightAnswer.value = percent
         _progressAnswers.value = String.format(
@@ -122,15 +122,21 @@ class GameViewModel(application: Application) : AndroidViewModel(application) {
             countOfRightAnswers,
             gameSettings.minCountOfRightAnswers
         )
-        _enoughCount.value = countOfRightAnswers >= gameSettings.minCountOfRightAnswers
-        _enoughPercent.value = percent >= gameSettings.minPercentOfRightAnswers
+        if (countOfRightAnswers >= gameSettings.minCountOfRightAnswers){
+            _enoughCount.value = true
+            Log.d("My", "Enough count: ${enoughCount.value}")
+        }
+        if (percent >= gameSettings.minPercentOfRightAnswers){
+            _enoughPercent.value = true
+            Log.d("My", "Enough percent: ${enoughPercent.value}")
+        }
     }
 
     private fun calculatePercent(): Int {
-        if (countOfQuestion == 0) {
+        if (countOfQuestions == 0) {
             return 0
         }
-        return ((countOfRightAnswers / countOfQuestion.toDouble()) * 100).toInt()
+        return ((countOfRightAnswers / countOfQuestions.toDouble()) * 100).toInt()
     }
 
     override fun onCleared() {
