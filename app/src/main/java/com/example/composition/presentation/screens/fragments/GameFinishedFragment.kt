@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.example.composition.R
 import com.example.composition.databinding.FragmentGameFinishedBinding
 
 class GameFinishedFragment : Fragment() {
@@ -33,24 +32,6 @@ class GameFinishedFragment : Fragment() {
         retryButtonListener()
         binding.result = args.result
     }
-
-
-    private fun getPercentOfRightAnswer() = with(args.result) {
-        if (countOfQuestions == 0) {
-            0
-        } else {
-            ((countOfRightAnswers / countOfQuestions.toDouble()) * 100).toInt()
-        }
-    }
-
-    private fun getSmileResId(): Int {
-        return if (args.result.winner) {
-            R.drawable.icon_happy
-        } else {
-            R.drawable.icon_worry
-        }
-    }
-
 
     private fun retryButtonListener() = with(binding) {
         btnRetry.setOnClickListener {
