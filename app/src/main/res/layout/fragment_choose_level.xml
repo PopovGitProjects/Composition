@@ -1,63 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout2"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.screens.fragments.ChooseLevelFragment" >
+<layout>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/frameLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.screens.fragments.ChooseLevelFragment" >
 
-    <TextView
-        android:id="@+id/tvLevelChoose"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/chooseLevel"
-        android:textSize="24sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tvLevelChoose"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/chooseLevel"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnTestLevel"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/levelTest"
-        app:layout_constraintEnd_toEndOf="@+id/tvLevelChoose"
-        app:layout_constraintStart_toStartOf="@+id/tvLevelChoose"
-        app:layout_constraintTop_toBottomOf="@+id/tvLevelChoose" />
+        <Button
+            android:id="@+id/btnTestLevel"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="@string/levelTest"
+            app:layout_constraintEnd_toEndOf="@+id/tvLevelChoose"
+            app:layout_constraintStart_toStartOf="@+id/tvLevelChoose"
+            app:layout_constraintTop_toBottomOf="@+id/tvLevelChoose" />
 
-    <Button
-        android:id="@+id/btnEasyLevel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/easy"
-        android:backgroundTint="@color/levelEasy"
-        app:layout_constraintEnd_toEndOf="@+id/btnTestLevel"
-        app:layout_constraintStart_toStartOf="@+id/btnTestLevel"
-        app:layout_constraintTop_toBottomOf="@+id/btnTestLevel" />
+        <Button
+            android:id="@+id/btnEasyLevel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/easy"
+            android:backgroundTint="@color/levelEasy"
+            app:layout_constraintEnd_toEndOf="@+id/btnTestLevel"
+            app:layout_constraintStart_toStartOf="@+id/btnTestLevel"
+            app:layout_constraintTop_toBottomOf="@+id/btnTestLevel" />
 
-    <Button
-        android:id="@+id/btnNormalLevel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/normal"
-        android:backgroundTint="@color/levelNormal"
-        app:layout_constraintEnd_toEndOf="@+id/btnEasyLevel"
-        app:layout_constraintStart_toStartOf="@+id/btnEasyLevel"
-        app:layout_constraintTop_toBottomOf="@+id/btnEasyLevel" />
+        <Button
+            android:id="@+id/btnNormalLevel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/normal"
+            android:backgroundTint="@color/levelNormal"
+            app:layout_constraintEnd_toEndOf="@+id/btnEasyLevel"
+            app:layout_constraintStart_toStartOf="@+id/btnEasyLevel"
+            app:layout_constraintTop_toBottomOf="@+id/btnEasyLevel" />
 
-    <Button
-        android:id="@+id/btnHardLevel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/hard"
-        android:backgroundTint="@color/levelHard"
-        app:layout_constraintEnd_toEndOf="@+id/btnNormalLevel"
-        app:layout_constraintStart_toStartOf="@+id/btnNormalLevel"
-        app:layout_constraintTop_toBottomOf="@+id/btnNormalLevel" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btnHardLevel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/hard"
+            android:backgroundTint="@color/levelHard"
+            app:layout_constraintEnd_toEndOf="@+id/btnNormalLevel"
+            app:layout_constraintStart_toStartOf="@+id/btnNormalLevel"
+            app:layout_constraintTop_toBottomOf="@+id/btnNormalLevel" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
