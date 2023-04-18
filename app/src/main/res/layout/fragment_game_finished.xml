@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
+    <data>
+        <variable
+            name="result"
+            type="com.example.composition.domain.entity.GameResult"
+            />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -13,6 +19,7 @@
             android:layout_height="150dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            app:resultEmoji="@{result.winner}"
             app:layout_constraintBottom_toTopOf="@+id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,10 +33,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
+            app:requiredAnswers="@{result.gameSettings.minCountOfRightAnswers}"
             app:layout_constraintBottom_toTopOf="@+id/tvScoreAnswer"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline"
-            app:layout_constraintVertical_chainStyle="spread" />
+            app:layout_constraintVertical_chainStyle="spread"
+            tools:text="@string/score_answer"
+            />
 
         <TextView
             android:id="@+id/tvScoreAnswer"
@@ -37,10 +47,27 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="24dp"
-            app:layout_constraintBottom_toTopOf="@+id/tvScorePercentage"
+            app:scoreAnswer="@{result.countOfRightAnswers}"
+            app:layout_constraintBottom_toTopOf="@+id/tvMinPercentage"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvRequiredAnswer"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintVertical_chainStyle="packed"
+            tools:text="@string/required_score"
+            />
+
+        <TextView
+            android:id="@+id/tvMinPercentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:requiredAnswers="@{result.gameSettings.minPercentOfRightAnswers}"
+            android:layout_marginBottom="191dp"
+            app:layout_constraintBottom_toTopOf="@+id/tvScorePercentage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvScoreAnswer"
+            tools:text="@string/require_percentage"
+            />
 
         <TextView
             android:id="@+id/tvScorePercentage"
@@ -48,19 +75,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="191dp"
-            app:layout_constraintBottom_toTopOf="@+id/tvScore"
+            app:scorePercentage="@{result}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvScoreAnswer" />
-
-        <TextView
-            android:id="@+id/tvScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvScorePercentage" />
+            app:layout_constraintTop_toBottomOf="@+id/tvMinPercentage"
+            tools:text="@string/score_percentage"
+            />
 
         <Button
             android:id="@+id/btnRetry"

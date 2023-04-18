@@ -1,7 +1,6 @@
 package com.example.composition.presentation.screens.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,32 +31,9 @@ class GameFinishedFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         retryButtonListener()
-        bindViews()
+        binding.result = args.result
     }
 
-    private fun bindViews() = with(binding) {
-        with(args.result) {
-            emojiResult.setImageResource(getSmileResId())
-            tvRequiredAnswer.text = String.format(
-                getString(R.string.required_score),
-                gameSettings.minCountOfRightAnswers,
-            )
-            Log.d("My", "Text: ${tvRequiredAnswer.text}")
-            tvScore.text = String.format(
-                getString(R.string.score_answer),
-                countOfRightAnswers
-            )
-            tvScoreAnswer.text = String.format(
-                getString(R.string.require_percentage),
-                gameSettings.minPercentOfRightAnswers
-            )
-            tvScorePercentage.text = String.format(
-                getString(R.string.score_percentage),
-                getPercentOfRightAnswer()
-            )
-        }
-
-    }
 
     private fun getPercentOfRightAnswer() = with(args.result) {
         if (countOfQuestions == 0) {
